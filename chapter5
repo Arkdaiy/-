@@ -1,0 +1,44 @@
+public class Computer {
+    private Hardware hardware;
+
+    public Computer(String os, String processor, int ramSize) {
+        hardware = new Hardware(os, processor, ramSize);
+    }
+
+    public Hardware getHardware() {
+        return hardware;
+    }
+
+    class Hardware {
+        private String os;
+        private String processor;
+        private int ramSize;
+
+        public Hardware(String os, String processor, int ramSize) {
+            this.os = os;
+            this.processor = processor;
+            this.ramSize = ramSize;
+        }
+
+        public String getOS() {
+            return os;
+        }
+
+        public String getProcessor() {
+            return processor;
+        }
+
+        public int getRamSize() {
+            return ramSize;
+        }
+    }
+
+    public static void main(String[] args) {
+        Computer computer = new Computer("Windows 10", "Intel Core i7", 16);
+        Hardware hardware = computer.getHardware();
+
+        System.out.println("Operating System: " + hardware.getOS());
+        System.out.println("Processor: " + hardware.getProcessor());
+        System.out.println("RAM Size: " + hardware.getRamSize() + "GB");
+    }
+}
