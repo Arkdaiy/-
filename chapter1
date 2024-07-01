@@ -1,0 +1,33 @@
+/*
+Буянтуев Аркадий Б763-2
+
+Вариант В
+
+3. Числа, которые делятся на 3 или на 9.
+
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите количество чисел n:");
+        int n = scanner.nextInt();
+
+        int[] numbers = new int[n];
+        
+        System.out.println("Введите " + n + " целых чисел:");
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        System.out.println("Числа, которые делятся на 3 или на 9:");
+        for (int number : numbers) {
+            if (number % 3 == 0 || number % 9 == 0) {
+                System.out.print(number + " ");
+            }
+        }
+    }
+}
