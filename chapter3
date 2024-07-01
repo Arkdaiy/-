@@ -1,0 +1,82 @@
+class Patient {
+    private int id;
+    private String lastName;
+    private String firstName;
+    private String middleName;
+    private String address;
+    private String phoneNumber;
+    private int medicalCardNumber;
+    private String diagnosis;
+
+    public Patient(int id, String lastName, String firstName, String middleName, String address, String phoneNumber, int medicalCardNumber, String diagnosis) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.medicalCardNumber = medicalCardNumber;
+        this.diagnosis = diagnosis;
+    }
+
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public int getMedicalCardNumber() {
+        return medicalCardNumber;
+    }
+
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", medicalCardNumber=" + medicalCardNumber +
+                ", diagnosis='" + diagnosis + '\'' +
+                '}';
+    }
+}
+
+class PatientArray {
+    private Patient[] patients;
+
+    public PatientArray(Patient[] patients) {
+        this.patients = patients;
+    }
+
+    public void printPatientsWithDiagnosis(String diagnosis) {
+        for (Patient patient : patients) {
+            if (patient.getDiagnosis().equals(diagnosis)) {
+                System.out.println(patient);
+            }
+        }
+    }
+
+    public void printPatientsWithMedicalCardNumberRange(int min, int max) {
+        for (Patient patient : patients) {
+            if (patient.getMedicalCardNumber() >= min && patient.getMedicalCardNumber() <= max) {
+                System.out.println(patient);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Patient[] patients = new Patient[3];
+        patients[0] = new Patient(1, "Иванов", "Иван", "Иванович", "ул. Смолина, 1", "1900347890", 12345, "Грипп");
+        patients[1] = new Patient(2, "Петров", "Петр", "Петрович", "ул. Жердева, 2", "0987983121", 54321, "Простуда");
+        patients[2] = new Patient(3, "Сидоров", "Сидор", "Сидорович", "ул. Дачная, 3", "9863543210", 67890, "Грипп");
+
+        PatientArray patientArray = new PatientArray(patients);
+        
+        patientArray.printPatientsWithDiagnosis("Грипп");
+        
+        patientArray.printPatientsWithMedicalCardNumberRange(10000, 60000);
+    }
+}
